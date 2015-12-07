@@ -107,4 +107,19 @@
 }
 
 
+/* 统计用户进入此界面的时长、频率等，看当前界面是否受欢迎 */
+-(void)viewWillAppear:(BOOL)animated{
+    /** 自定义事件，统计3D立体切换效果的点击次数 */
+    [MobClick beginEvent:@"3D"];
+    
+    [MobClick beginLogPageView:@"ViewController"];
+}
+
+-(void)viewWillDisappear:(BOOL)animated{
+    /** 每一次自定义事件都必须要有开始和结束才算完成一次 */
+    [MobClick endEvent:@"3D"];
+    [MobClick endLogPageView:@"ViewController"];
+}
+
+
 @end

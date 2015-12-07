@@ -56,12 +56,10 @@
 
 #pragma mark - UIWebViewDelegate
 - (void)webViewDidStartLoad:(UIWebView *)webView{
-//    [self.view addSubview:self.loading];
-//    [self.loading showHub];
+
     [self showProgress];
 }
 - (void)webViewDidFinishLoad:(UIWebView *)webView{
-//    [self.loading dismissHub];
     [self hideProgress];
 
 }
@@ -70,6 +68,16 @@
     errorLabel.text = @"加载出错，请从新刷新";
 }
 
+
+/* 统计用户进入此界面的时长、频率等，看当前界面是否受欢迎 */
+-(void)viewWillAppear:(BOOL)animated{
+    
+    [MobClick beginLogPageView:@"ViewController"];
+}
+
+-(void)viewWillDisappear:(BOOL)animated{
+    [MobClick endLogPageView:@"ViewController"];
+}
 
 
 - (void)didReceiveMemoryWarning {

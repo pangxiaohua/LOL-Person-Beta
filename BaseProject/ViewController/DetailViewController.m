@@ -93,16 +93,14 @@
     
 }
 
-
--(void)viewDidDisappear:(BOOL)animated{
-    [[self shareInstance].view removeFromSuperview];
-    [self shareInstance].player = nil;
+/* 统计用户进入此界面的时长、频率等，看当前界面是否受欢迎 */
+-(void)viewWillAppear:(BOOL)animated{
+    
+    [MobClick beginLogPageView:@"ViewController"];
 }
 
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+-(void)viewWillDisappear:(BOOL)animated{
+    [MobClick endLogPageView:@"ViewController"];
 }
 
 @end

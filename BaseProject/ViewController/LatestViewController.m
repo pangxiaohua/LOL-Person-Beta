@@ -147,12 +147,7 @@ kRemoveCellSeparator
 }
 
 -(void)configTableHeader{
-    /*
-     下面这行代码表示：没有头部图片就不添加
-    if (self.latestVM.headImageURLs.count==0) {
-        return;
-    }
-    */
+
     UIView *headerView = [[UIView alloc]initWithFrame:CGRectMake(0,0,0,135)];
     //传入头部图片的地址
     NSArray *names = @[@"we1.jpg",@"we2.jpg",@"we3.jpg",@"we4.jpg"];
@@ -177,5 +172,16 @@ kRemoveCellSeparator
         self.tableView.backgroundColor = [UIColor whiteColor];
     }
 }
+
+/* 统计用户进入此界面的时长、频率等，看当前界面是否受欢迎 */
+-(void)viewWillAppear:(BOOL)animated{
+    
+    [MobClick beginLogPageView:@"ViewController"];
+}
+
+-(void)viewWillDisappear:(BOOL)animated{
+    [MobClick endLogPageView:@"ViewController"];
+}
+
 
 @end

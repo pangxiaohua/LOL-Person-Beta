@@ -64,14 +64,14 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+/* 统计用户进入此界面的时长、频率等，看当前界面是否受欢迎 */
+-(void)viewWillAppear:(BOOL)animated{
+    
+    [MobClick beginLogPageView:@"ViewController"];
 }
-*/
+
+-(void)viewWillDisappear:(BOOL)animated{
+    [MobClick endLogPageView:@"ViewController"];
+}
 
 @end

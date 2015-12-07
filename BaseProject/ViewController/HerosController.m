@@ -76,6 +76,9 @@
 
 /** 返回每一位英雄的json数据转化为的字典 */
 -(NSDictionary *)dicWithID:(NSString *)ID{
+    if (ID.integerValue > 127) {
+        return nil;
+    }
     NSString *path = [[NSBundle mainBundle]pathForResource:ID ofType:@"json"];
     NSData *data = [NSData dataWithContentsOfFile:path];
     NSError *error = nil;

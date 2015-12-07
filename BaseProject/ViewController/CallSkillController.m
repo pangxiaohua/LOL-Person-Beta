@@ -119,6 +119,17 @@
     return cell;
 }
 
+
+/* 统计用户进入此界面的时长、频率等，看当前界面是否受欢迎 */
+-(void)viewWillAppear:(BOOL)animated{
+    
+    [MobClick beginLogPageView:@"ViewController"];
+}
+
+-(void)viewWillDisappear:(BOOL)animated{
+    [MobClick endLogPageView:@"ViewController"];
+}
+
 //四周边距
 -(UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section{
     return UIEdgeInsetsMake(0, 0, 0, 0);

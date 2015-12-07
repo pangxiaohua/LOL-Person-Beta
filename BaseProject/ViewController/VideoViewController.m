@@ -85,16 +85,22 @@
     return CGSizeMake(width, height);
 }
 
-//-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
-//    VideoListViewController *vc = segue.destinationViewController;
-//    NSIndexPath *indexPath = [self.collVC indexPathForCell:sender];
-//    vc.videoData = [self.videoviewModel videosListWithIndexPath:indexPath];
-//    //vc.catId = self.videoviewModel.GameId;
-//}
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     VideoListViewController *vc = segue.destinationViewController;
     NSIndexPath *indexpath = [self.collectionView indexPathForCell:sender];
     vc.videoData = [self.videoviewModel videosListWithIndexPath:indexpath];
 }
+
+/* 统计用户进入此界面的时长、频率等，看当前界面是否受欢迎 */
+-(void)viewWillAppear:(BOOL)animated{
+    
+    [MobClick beginLogPageView:@"ViewController"];
+}
+
+-(void)viewWillDisappear:(BOOL)animated{
+    [MobClick endLogPageView:@"ViewController"];
+}
+
 
 @end

@@ -91,11 +91,6 @@
     return self.ShowVM.rowNumber;
 }
 
-//-(NSInteger)timeForString:(NSString *)string{
-//    NSInteger time = (string).integerValue;
-//    
-//}
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     ShowPlayCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
     cell.autorLb.text = [self.ShowVM nickNameForRow:indexPath.row];
